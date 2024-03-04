@@ -1,3 +1,6 @@
+
+
+
 function updateOutput() {
     const editorContent = document.getElementById('editor').querySelector('textarea').value;
     const outputFrame = document.getElementById('outputFrame');
@@ -26,3 +29,19 @@ function updateOutput() {
  })
 
 
+ function updateLineNumbers() {
+    var codeInput = document.getElementById("codeInput");
+    var lineNumbers = document.getElementById("lineNumbers");
+
+    var lines = codeInput.value.split("\n");
+    var lineNumberContent = "";
+
+    for (var i = 1; i <= lines.length; i++) {
+        lineNumberContent += i + "<br>";
+    }
+
+    lineNumbers.innerHTML = lineNumberContent;
+}
+
+// Initial line numbers update
+updateLineNumbers();
