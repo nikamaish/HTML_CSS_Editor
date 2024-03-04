@@ -1,0 +1,32 @@
+body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100vh;
+    margin: 0;
+}
+
+#editor, #preview {
+    box-sizing: border-box;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #ddd;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    overflow: auto;
+}
+
+#editor {
+    background-color: #f8f8f8;
+    border-right: none;
+    resize: none;
+}
+#editor:focus {
+    outline: none;
+}
+
+#preview {
+    background-color: #fff;
+    overflow: hidden;
+}
