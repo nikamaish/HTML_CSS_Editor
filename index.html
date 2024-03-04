@@ -6,112 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Live HTML and CSS Editor</title>
     <link rel="stylesheet" href="./style.css">
-    <style>
-        body {
-            display: grid;
-            grid-template-columns: 0.6fr 1fr 0.6fr;
-            height: 100vh;
-            margin: 0;
-            font-family: 'Arial', sans-serif;
-            background-color: #f3f3f3;
-        }
-
-        #challenge {
-            box-sizing: border-box;
-            padding: 20px;
-            width: 100%;
-            height: 100%;
-            border: 1px solid #ddd;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        #challenge h2 {
-            margin-bottom: 20px;
-            color: green;
-        }
-
-        #editor {
-            position: relative;
-            box-sizing: border-box;
-            padding: 20px;
-            width: 100%;
-            height: 100%;
-            border: 1px solid #ddd;
-            position: relative;
-            display: flex;
-        }
-        #editor textarea {
-           padding-top: 20px;
-           /* line-height: 1.5em; */
-        }
-        #lineNumbers {
-            box-sizing: border-box;
-            padding: 20px 20px 20px 0;
-            background-color: #f4f4f4;
-            border-right: 1px solid #ddd;
-            font-family: monospace;
-            overflow-y: auto;
-            max-height: calc(100vh + 40px);
-        }
-
-        #lineNumbers pre {
-            margin: 0;
-        }
-
-        #codeInput {
-            flex: 1;
-            box-sizing: border-box;
-            width: 100%;
-            height: 100%;
-            border: none;
-            outline: none;
-            background-color: #f8f8f8c1;
-            color: #333;
-            padding: 10px;
-            border-radius: 5px;
-            transition: box-shadow 0.3s;
-            overflow-y: auto;
-            scrollbar-width: thin;
-        }
-
-        #codeInput:focus {
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-        }
-
-        #output {
-            box-sizing: border-box;
-            padding: 20px;
-            width: 100%;
-            height: 100%;
-            border: 1px solid #ddd;
-            overflow: hidden;
-        }
-
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        #clear {
-            cursor: pointer;
-            background-color: green;
-            outline: none;
-            border: none;
-            padding: 10px;
-            border-radius: 5px;
-            color: white;
-            margin-bottom: 20px;
-        }
-
-        #clear:hover {
-            background-color: darkgreen;
-        }
-    </style>
+    
 </head>
 
 <body>
@@ -131,55 +26,55 @@
     </div>
 
     <script>
-        function updateOutput() {
-            const editorContent = document.getElementById('codeInput').value;
-            const outputFrame = document.getElementById('outputFrame');
-            const output = outputFrame.contentDocument || outputFrame.contentWindow.document;
+   function updateOutput() {
+    const editorContent = document.getElementById('codeInput').value;
+    const outputFrame = document.getElementById('outputFrame');
+    const output = outputFrame.contentDocument || outputFrame.contentWindow.document;
 
-            output.open();
-            output.write(editorContent);
-            output.close();
+    output.open();
+    output.write(editorContent);
+    output.close();
 
-            // Update line numbers based on visible lines
-            updateVisibleLineNumbers();
-        }
+    // Update line numbers based on visible lines
+    updateVisibleLineNumbers();
+}
 
-        function updateVisibleLineNumbers() {
-            var codeInput = document.getElementById("codeInput");
-            var lineNumbers = document.getElementById("lineNumbers");
+function updateVisibleLineNumbers() {
+    var codeInput = document.getElementById("codeInput");
+    var lineNumbers = document.getElementById("lineNumbers");
 
-            var scrollTop = codeInput.scrollTop;
-            var lineHeight = codeInput.scrollHeight / codeInput.rows;
-            var firstVisibleLineNumber = Math.floor(scrollTop / lineHeight) + 1;
+    var scrollTop = codeInput.scrollTop;
+    var lineHeight = codeInput.scrollHeight / codeInput.rows;
+    var firstVisibleLineNumber = Math.floor(scrollTop / lineHeight) + 1;
 
-            var lines = codeInput.value.split("\n");
-            var lineNumberContent = "";
+    var lines = codeInput.value.split("\n");
+    var lineNumberContent = "";
 
-            for (var i = firstVisibleLineNumber; i <= lines.length; i++) {
-                lineNumberContent += i + "<br>";
-            }
+    for (var i = firstVisibleLineNumber; i <= lines.length; i++) {
+        lineNumberContent += i + "<br>";
+    }
 
-            lineNumbers.innerHTML = "<pre>" + lineNumberContent + "</pre>";
-        }
+    lineNumbers.innerHTML = "<pre>" + lineNumberContent + "</pre>";
+}
 
-        function syncScroll() {
-            var codeInput = document.getElementById("codeInput");
-            var lineNumbers = document.getElementById("lineNumbers");
+function syncScroll() {
+    var codeInput = document.getElementById("codeInput");
+    var lineNumbers = document.getElementById("lineNumbers");
 
-            lineNumbers.scrollTop = codeInput.scrollTop;
-        }
+    lineNumbers.scrollTop = codeInput.scrollTop;
+}
 
-        // Initial line numbers update
-        updateVisibleLineNumbers();
+// Initial line numbers update
+updateVisibleLineNumbers();
 
 
-        let clear = document.getElementById('clear');
- clear.addEventListener('click', function(){
-    document.getElementById('editor').querySelector('textarea').value = '';
-    updateOutput();
-    // why updateOutput is called here? 
+let clear = document.getElementById('clear');
+clear.addEventListener('click', function(){
+document.getElementById('editor').querySelector('textarea').value = '';
+updateOutput();
+// why updateOutput is called here? 
 
- })
+})
     </script>
 </body>
 
