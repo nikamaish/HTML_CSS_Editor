@@ -9,7 +9,7 @@
     <style>
         body {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 0.6fr 1fr 0.6fr;
             height: 100vh;
             margin: 0;
             font-family: 'Arial', sans-serif;
@@ -46,10 +46,11 @@
         }
         #editor textarea {
            padding-top: 20px;
+           /* line-height: 1.5em; */
         }
         #lineNumbers {
             box-sizing: border-box;
-            padding: 20px;
+            padding: 20px 20px 20px 0;
             background-color: #f4f4f4;
             border-right: 1px solid #ddd;
             font-family: monospace;
@@ -125,6 +126,7 @@
     </div>
 
     <div id="output">
+        <button id="clear">Clear</button>
         <iframe id="outputFrame" frameborder="0"></iframe>
     </div>
 
@@ -169,6 +171,15 @@
 
         // Initial line numbers update
         updateVisibleLineNumbers();
+
+
+        let clear = document.getElementById('clear');
+ clear.addEventListener('click', function(){
+    document.getElementById('editor').querySelector('textarea').value = '';
+    updateOutput();
+    // why updateOutput is called here? 
+
+ })
     </script>
 </body>
 
