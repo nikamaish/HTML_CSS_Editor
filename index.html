@@ -8,11 +8,23 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <textarea id="editor" placeholder="Enter your HTML and CSS Code here..." oninput="updatePreview()"></textarea>
-    <iframe id="preview" frameborder="0"></iframe>
+    <div id="challenge">
+        <h2>Recreate below Shape</h2>
+        <img src="eclipse.png" alt="Shape Image" style="max-width: 100%;">
+    </div>
+
+    <div id="editor">
+        <button id="clear">Clear</button>
+        <textarea placeholder="Write your HTML and CSS code here..." oninput="updateOutput()"></textarea>
+    </div>
+
+    <div id="output">
+        <iframe id="outputFrame" frameborder="0"></iframe>
+    </div>
 
     <script src="./script.js"></script>
-    
+
+    <!-- //  An iframe, short for "inline frame," is an HTML element that allows you to embed another HTML document inside the current document. It's like a window or a frame that contains another webpage or content. The content inside the iframe is a separate HTML document with its own structure, styles, and scripts. -->
 
 </body>
 </html>
